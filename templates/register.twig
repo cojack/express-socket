@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <form action="/register" method="post">
+        <label>
+            <span>Name</span>
+            <input name="name" value="{{ name }}" required>
+        </label>
+        <label>
+            <span>Email</span>
+            <input type="email" name="email" value="{{ email }}" required>
+        </label>
+        <label>
+            <span>Password</span>
+            <input type="password" name="password" value="{{ password }}" required>
+        </label>
+        <label>
+            <span>Birth date</span>
+            <input type="date" name="birth" value="{{ birth }}" required>
+        </label>
+
+        <button name="submit">Submit</button>
+    </form>
+{% endblock %}
+

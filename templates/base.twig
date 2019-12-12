@@ -28,6 +28,16 @@
 
       </style>
       <title>{% block title %}{% endblock %} - My Webpage</title>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+          const socket = io('http://localhost:3000');
+          socket.on('connect', function(){});
+          socket.on('event', function(data){
+              console.log(data);
+              socket.emit('message', {message: 'Thank you!'});
+          });
+          socket.on('disconnect', function(){});
+      </script>
   </head>
   <body>
     <div id="content">{% block content %}{% endblock %}</div>

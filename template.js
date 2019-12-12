@@ -1,5 +1,7 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 const port = process.env.NODE_PORT || 3000;
 const {TwingEnvironment, TwingLoaderFilesystem} = require('twing');
 let loader = new TwingLoaderFilesystem('./templates');
@@ -26,12 +28,23 @@ app.get('/register', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
+    req.io.broadcast('onRegister', {user: req.body});
     const output = await twing.render('register.twig', req.body);
     res.send(output);
 });
 
 app.use('/user', myRouter);
 
-app.listen(port, () => {
+io.on('connection', conn => {
+    conn.emit('event', {Hello: 'My Friend'});
+    conn.on('message', (data) => {
+        console.log('Message', data);
+    });
+    console.log('someone one connected');
+});
+
+io.broadcast('event2', {message: 'Hello'});
+
+server.listen(port, () => {
     console.log('Node.js Express server listening on port '+port);
 });

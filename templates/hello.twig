@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+        {% if name starts with 'P' %}
+            Aha so it's you!
+        {% endif %}
+
+      <main>
+          <img src="https://svgur.com/i/1ja.svg">
+          <span>Hello{{ ' ' + name|trim }}!</span>
+      <em>Powered by Twing</em>
+      </main>
+{% endblock %}
+

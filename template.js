@@ -4,7 +4,7 @@ const port = process.env.NODE_PORT || 3000;
 const {TwingEnvironment, TwingLoaderFilesystem} = require('twing');
 let loader = new TwingLoaderFilesystem('./templates');
 let twing = new TwingEnvironment(loader);
-const myRouter = require('./routers');
+const myRouter = require('./user-router');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -31,7 +31,6 @@ app.post('/register', async (req, res) => {
 });
 
 app.use('/user', myRouter);
-app.use('/press', pressRouter);
 
 app.listen(port, () => {
     console.log('Node.js Express server listening on port '+port);

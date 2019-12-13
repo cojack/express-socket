@@ -43,8 +43,10 @@ io.on('connection', conn => {
     console.log('someone one connected');
 });
 
-io.broadcast('event2', {message: 'Hello'});
+io.emit('event2', {message: 'Hello'});
 
 server.listen(port, () => {
     console.log('Node.js Express server listening on port '+port);
 });
+
+

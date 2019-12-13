@@ -3,10 +3,10 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <form action="/register" method="post">
+    <form action="/user" method="post">
         <label>
             <span>Name</span>
-            <input name="name" value="{{ name }}" required>
+            <input name="username" value="{{ username }}" required>
         </label>
         <label>
             <span>Email</span>
@@ -18,7 +18,7 @@
         </label>
         <label>
             <span>Birth date</span>
-            <input type="date" name="birth" value="{{ birth }}" required>
+            <input type="date" name="birthday" value="{{ birthday }}" required>
         </label>
 
         <button name="submit">Submit</button>
